@@ -1,0 +1,1 @@
+In initials_users.csv in column "password" is hash for passwords "adminpassword" and "userpassword"

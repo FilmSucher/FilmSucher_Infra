@@ -1,0 +1,8 @@
+- name: Copy script to remote
+  copy:
+    src: files/generate_json_from_pg.py
+    dest: /tmp/generate_json_from_pg.py
+    mode: '0755'
+
+- name: Run script to export films JSON
+  command: python3 /tmp/generate_json_from_pg.py

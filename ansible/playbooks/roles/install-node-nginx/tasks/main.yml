@@ -1,0 +1,8 @@
+- name: Install Node.js and Nginx
+  apt:
+    name:
+      - nginx
+      - nodejs
+      - npm
+    state: present
+    update_cache: yes

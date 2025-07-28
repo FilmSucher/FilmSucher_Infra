@@ -1,0 +1,13 @@
+- name: Install Python 3 and pip
+  apt:
+    name:
+      - python3
+      - python3-pip
+    state: present
+    update_cache: yes
+    
+- name: Install psycopg2 system-wide
+  apt:
+    name: python3-psycopg2
+    state: present
+    update_cache: yes

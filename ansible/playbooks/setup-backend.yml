@@ -1,0 +1,7 @@
+- name: Install and deployment of the Spring Boot-application 
+  hosts: backend
+  become: true
+  roles:
+    - install-backend
+    - deploy-backend-auth
+    - deploy-backend-catalog

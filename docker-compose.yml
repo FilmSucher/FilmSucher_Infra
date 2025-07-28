@@ -1,0 +1,27 @@
+services: 
+   ansible:
+    build: ./ansible
+    container_name: ansible
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./ansible/inventory.ini:/ansible/inventory.ini
+      - ./ansible/ansible_key:/ansible/ansible_key
+      - ./ansible/playbooks:/ansible/playbooks
+    command: sh -c "chmod 600 /ansible/ansible_key && bash"
+   
+   jenkins:
+    build: ./jenkins
+    container_name: jenkins
+    stdin_open: true
+    tty: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./jenkins/jenkins_home:/var/jenkins_home
+      - ./jenkins/basic-security.groovy:/var/jenkins_home/init.groovy.d/basic-security.groovy
+      - ./jenkins/pipelines:/var/jenkins_home/pipelines      
+      # - ./jenkins/jobs/:/var/jenkins_home/init.groovy.d/
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    restart: unless-stopped

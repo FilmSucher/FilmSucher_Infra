@@ -1,0 +1,6 @@
+- name: Config DBs
+  hosts: db
+  become: true
+  roles:
+    - deploy-postgres
+    - deploy-elastic

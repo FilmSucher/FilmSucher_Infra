@@ -1,0 +1,76 @@
+# SCHEMA
+- name: Make DB (if not exists)
+  become: true
+  shell: |
+    sudo -u postgres psql -tc "SELECT 1 FROM pg_database WHERE datname = 'film_sucher'" | grep -q 1 || \
+    sudo -u postgres psql -c "CREATE DATABASE film_sucher;"
+    
+- name: Create db user (if not exists)
+  become: true
+  shell: |
+    sudo -u postgres psql -tc "SELECT 1 FROM pg_roles WHERE rolname = 'film_user'" | grep -q 1 || \
+    sudo -u postgres psql -c "CREATE USER film_user WITH ENCRYPTED PASSWORD 'film_user_password';"
+
+- name: Grant privileges to user
+  become: true
+  shell: |
+    sudo -u postgres psql -c "GRANT CONNECT ON DATABASE film_sucher TO film_user;"
+    sudo -u postgres psql -d film_sucher -c "GRANT USAGE ON SCHEMA public TO film_user;"
+    sudo -u postgres psql -d film_sucher -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO film_user;"
+    sudo -u postgres psql -d film_sucher -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO film_user;"
+
+- name: Copy films.csv to remote VM
+  copy:
+    src: files/initial_films.csv
+    dest: /tmp/initial_films.csv
+    mode: '0644'
+
+- name: Make table Films and import CSV (if not exists)
+  become: true
+  shell: |
+    sudo -u postgres psql film_sucher -tc "SELECT 1 FROM information_schema.tables WHERE table_name = 'films'" | grep -q 1 || \
+    sudo -u postgres psql film_sucher -c "CREATE TABLE Films (
+      id BIGSERIAL PRIMARY KEY,
+      imdb_id VARCHAR(20),
+      title VARCHAR(255) NOT NULL,
+      year INTEGER NOT NULL,
+      genre VARCHAR(255),
+      duration INTEGER,
+      country VARCHAR(255),
+      description TEXT,
+      bild_url VARCHAR(255),
+      rating DECIMAL(2,1)
+    );"
+    sudo -u postgres psql film_sucher -c "\copy Films(imdb_id, title, year, genre, duration, country, description, bild_url, rating) FROM '/tmp/initial_films.csv' DELIMITER ',' CSV HEADER"
+   
+- name: Copy users.csv to remote VM
+  copy:
+    src: files/initials_users.csv
+    dest: /tmp/initial_users.csv
+    mode: '0644'
+    
+- name: Make table Users and import CSV (if not exists)
+  become: true
+  shell: |
+    sudo -u postgres psql film_sucher -tc "SELECT 1 FROM information_schema.tables WHERE table_name = 'users'" | grep -q 1 || \
+    sudo -u postgres psql film_sucher -c "CREATE TABLE Users (
+      id BIGSERIAL PRIMARY KEY,
+      username VARCHAR(255) NOT NULL,
+      password VARCHAR(255) NOT NULL,
+      role VARCHAR(20) NOT NULL
+    );"
+    sudo -u postgres psql film_sucher -c "\copy Users(username, password, role) FROM '/tmp/initial_users.csv' DELIMITER ',' CSV HEADER"
+
+
+- name: Make table Favorites (if not exists)
+  become: true
+  shell: |
+    sudo -u postgres psql film_sucher -tc "SELECT 1 FROM information_schema.tables WHERE table_name = 'favorites'" | grep -q 1 || \
+    sudo -u postgres psql film_sucher -c "CREATE TABLE Favorites (
+      film_id BIGINT NOT NULL,
+      user_id BIGINT NOT NULL,
+      added_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      PRIMARY KEY (film_id, user_id),
+      FOREIGN KEY (film_id) REFERENCES Films(id) ON DELETE CASCADE,
+      FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
+    );"

@@ -1,0 +1,9 @@
+- name: Update apt and setup base-utils
+  apt:
+    update_cache: yes
+    name:
+      - curl
+      - git
+      - unzip
+      - gnupg
+    state: present

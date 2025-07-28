@@ -1,0 +1,5 @@
+- name: Deploy Auth-Service
+  hosts: backend
+  become: true
+  roles:
+    - deploy-backend-auth

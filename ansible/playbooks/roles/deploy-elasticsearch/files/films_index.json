@@ -1,0 +1,13 @@
+{
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "properties": {
+      "title": { "type": "text" },
+      "description": { "type": "text" },
+      "country": { "type": "text" },
+      "genre": { "type": "text" }
+    }
+  }
+}

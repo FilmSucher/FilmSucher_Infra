@@ -1,0 +1,5 @@
+- name: Install the VUE-application
+  hosts: frontend
+  become: true
+  roles:
+    - install-node-nginx

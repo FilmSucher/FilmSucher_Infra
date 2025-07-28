@@ -1,0 +1,45 @@
+- name: Make directory
+  file:
+    path: /opt/auth
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Copy jar
+  copy:
+    src: app.jar
+    dest: /opt/auth/app.jar
+    mode: '0755'
+
+- name: Copy systemd unit file
+  copy:
+    dest: /etc/systemd/system/auth.service
+    content: |
+        [Unit]
+        Description=Spring Boot Auth-Service
+        After=network.target
+        
+        [Service]
+        User=root
+        WorkingDirectory=/opt/auth
+        Environment=JWT_SECRET=Super_Duper_Secret_Token_Key_For_HS256_Lead
+        Environment=SQL_USERNAME=film_user
+        Environment=SQL_PASSWORD=film_user_password
+        ExecStart=/usr/bin/java -jar /opt/auth/app.jar
+        Restart=always
+        TimeoutStopSec=30
+        
+        [Install]
+        WantedBy=multi-user.target
+    mode: '0644'
+
+- name: Reload systemd
+  systemd:
+    daemon_reload: true
+
+- name: Start and enable Auth service
+  systemd:
+    name: auth
+    state: restarted
+    enabled: true

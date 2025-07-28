@@ -1,0 +1,58 @@
+- name: Wait for Elasticsearch to be available
+  uri:
+    url: https://localhost:9200
+    method: GET
+    user: elastic
+    password: elastic
+    force_basic_auth: true
+    status_code: 200
+    validate_certs: false
+  register: elastic_status
+  retries: 10
+  delay: 5
+  until: elastic_status.status == 200
+    
+#MAKE INDEX AND FILL
+- name: Delete 'films' index if it exists
+  uri:
+    url: https://localhost:9200/films
+    method: DELETE
+    user: elastic
+    password: elastic
+    force_basic_auth: true
+    validate_certs: false
+  ignore_errors: true
+  
+- name: Create Elasticsearch index for films
+  uri:
+    url: https://localhost:9200/films
+    method: PUT
+    user: elastic
+    password: elastic
+    force_basic_auth: true
+    validate_certs: false
+    body: "{{ lookup('file', role_path + '/files/films_index.json') }}"
+    body_format: json
+    headers:
+      Content-Type: "application/json"
+  register: create_index_result
+  retries: 5
+  delay: 5
+  until: create_index_result.status == 200
+
+- name: Read NDJSON-data
+  slurp:
+    src: /tmp/films_bulk.ndjson
+  register: ndjson_file
+
+- name: Load NDJSON in Elasticsearch
+  uri:
+    url: https://localhost:9200/films/_bulk
+    method: POST
+    user: elastic
+    password: elastic
+    force_basic_auth: true
+    validate_certs: false
+    headers:
+      Content-Type: "application/x-ndjson"
+    body: "{{ ndjson_file.content | b64decode }}"

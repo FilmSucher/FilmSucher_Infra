@@ -1,0 +1,3 @@
+username,password,role
+admin1,$2a$10$N9qo8uLOickgx2ZMRZoMy.Mrq4H8dJZ5QO5tHe6WYVZPjQrF6JQnO,ADMIN
+user1,$2a$10$E3Zx5oX9z3U6Yw8b1QhO0uL0d1Jk5vW6nY5rV2sT3pX4vY7z8X9bC,USER

@@ -1,0 +1,6 @@
+- name: Install Spring Boot-application 
+  hosts: backend
+  become: true
+  roles:
+    - install-java
+    

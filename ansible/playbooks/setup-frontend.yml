@@ -1,0 +1,6 @@
+- name: Install and deployment of the VUE-application
+  hosts: frontend
+  become: true
+  roles:
+    - install-frontend
+    - deploy-frontend

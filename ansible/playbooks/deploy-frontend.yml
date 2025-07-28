@@ -1,0 +1,5 @@
+- name: Deployment of the VUE-application
+  hosts: frontend
+  become: true
+  roles:
+    - deploy-frontend

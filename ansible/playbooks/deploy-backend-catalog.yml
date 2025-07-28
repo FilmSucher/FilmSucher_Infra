@@ -1,0 +1,5 @@
+- name: Deploy Catalog-Service
+  hosts: backend
+  become: true
+  roles:
+    - deploy-backend-catalog

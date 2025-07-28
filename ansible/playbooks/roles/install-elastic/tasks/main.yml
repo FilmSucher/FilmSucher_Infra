@@ -1,0 +1,22 @@
+- name: Add GPG-key
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add repository Elasticsearch
+  apt_repository:
+    repo: "deb https://artifacts.elastic.co/packages/8.x/apt stable main"
+    state: present
+    filename: 'elastic-8.x'
+
+- name: Install Elasticsearch
+  apt:
+    name: elasticsearch
+    update_cache: yes
+    state: present
+
+- name: Start app and service Elasticsearch
+  systemd:
+    name: elasticsearch
+    enabled: true
+    state: started

@@ -1,0 +1,9 @@
+- name: Setup DBs
+  hosts: db
+  become: true
+  roles:
+    - install-postgres
+    - install-python
+    - install-elastic
+    - deploy-postgres
+    - deploy-elastic

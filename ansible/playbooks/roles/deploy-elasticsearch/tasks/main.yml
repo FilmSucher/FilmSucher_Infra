@@ -1,0 +1,5 @@
+- name: Install and run python script
+  import_tasks: python.yml
+
+- name: Deploy and filling Elastic
+  import_tasks: elastic.yml
