@@ -8,6 +8,7 @@ services:
       - ./ansible/inventory.ini:/ansible/inventory.ini
       - ./ansible/ansible_key:/ansible/ansible_key
       - ./ansible/playbooks:/ansible/playbooks
+      - ./shared:/shared
     command: sh -c "chmod 600 /ansible/ansible_key && bash"
    
    jenkins:
@@ -20,8 +21,9 @@ services:
     volumes:
       - ./jenkins/jenkins_home:/var/jenkins_home
       - ./jenkins/basic-security.groovy:/var/jenkins_home/init.groovy.d/basic-security.groovy
-      - ./jenkins/pipelines:/var/jenkins_home/pipelines      
-      # - ./jenkins/jobs/:/var/jenkins_home/init.groovy.d/
+      - ./shared:/shared
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
     restart: unless-stopped
+    user: root

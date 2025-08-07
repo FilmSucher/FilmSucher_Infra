@@ -3,7 +3,7 @@ FROM jenkins/jenkins:lts
 USER root
 
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-  && apt-get install -y nodejs git \
+  && apt-get install -y nodejs git docker.io\
   && npm install -g npm
 
 USER jenkins

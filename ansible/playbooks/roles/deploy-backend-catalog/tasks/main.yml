@@ -8,7 +8,7 @@
 
 - name: Copy jar
   copy:
-    src: app.jar
+    src: /shared/backend_catalog/app.jar
     dest: /opt/catalog/app.jar
     mode: '0755'
 
@@ -24,8 +24,8 @@
         User=root
         WorkingDirectory=/opt/catalog
         Environment=JWT_SECRET=Super_Duper_Secret_Token_Key_For_HS256_Lead
-        Environment=SQL_USERNAME=film_user
-        Environment=SQL_PASSWORD=film_user_password
+        Environment=SPRING_DATASOURCE_USERNAME=film_user
+        Environment=SPRING_DATASOURCE_PASSWORD=film_user_password
         ExecStart=/usr/bin/java -jar /opt/catalog/app.jar
         Restart=always
         TimeoutStopSec=30

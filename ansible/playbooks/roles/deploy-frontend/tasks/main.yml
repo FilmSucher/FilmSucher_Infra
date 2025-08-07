@@ -1,13 +1,13 @@
 - name: Copy Vue.js build to server
   copy:
-    src: dist/
+    src: /shared/frontend/dist/
     dest: /usr/share/nginx/html
     mode: '0755'
   notify: Restart Nginx
 
 - name: Copy Nginx config
   copy:
-    src: default.conf
+    src: /shared/frontend/default.conf
     dest: /etc/nginx/conf.d/default.conf
   notify: Restart Nginx
   

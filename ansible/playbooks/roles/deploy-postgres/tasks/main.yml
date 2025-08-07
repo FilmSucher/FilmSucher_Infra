@@ -28,19 +28,23 @@
 - name: Make table Films and import CSV (if not exists)
   become: true
   shell: |
-    sudo -u postgres psql film_sucher -tc "SELECT 1 FROM information_schema.tables WHERE table_name = 'films'" | grep -q 1 || \
-    sudo -u postgres psql film_sucher -c "CREATE TABLE Films (
-      id BIGSERIAL PRIMARY KEY,
-      imdb_id VARCHAR(20),
-      title VARCHAR(255) NOT NULL,
-      year INTEGER NOT NULL,
-      genre VARCHAR(255),
-      duration INTEGER,
-      country VARCHAR(255),
-      description TEXT,
-      bild_url VARCHAR(255),
-      rating DECIMAL(2,1)
-    );"
+    sudo -u postgres psql film_sucher -tc "SELECT 1 FROM information_schema.tables WHERE table_name = 'films'" | grep -q 1 || (
+      sudo -u postgres psql film_sucher -c "CREATE TABLE Films (
+        id BIGINT PRIMARY KEY,
+        imdb_id VARCHAR(20),
+        title VARCHAR(255) NOT NULL,
+        year INTEGER NOT NULL,
+        genre VARCHAR(255),
+        duration INTEGER,
+        country VARCHAR(255),
+        description TEXT,
+        bild_url VARCHAR(255),
+        rating DECIMAL(2,1)
+      );" &&
+      sudo -u postgres psql film_sucher -c "CREATE SEQUENCE films_seq START WITH 1;" &&
+      sudo -u postgres psql film_sucher -c "ALTER TABLE films ALTER COLUMN id SET DEFAULT nextval('films_seq');"
+    )
+
     sudo -u postgres psql film_sucher -c "\copy Films(imdb_id, title, year, genre, duration, country, description, bild_url, rating) FROM '/tmp/initial_films.csv' DELIMITER ',' CSV HEADER"
    
 - name: Copy users.csv to remote VM
@@ -52,13 +56,17 @@
 - name: Make table Users and import CSV (if not exists)
   become: true
   shell: |
-    sudo -u postgres psql film_sucher -tc "SELECT 1 FROM information_schema.tables WHERE table_name = 'users'" | grep -q 1 || \
-    sudo -u postgres psql film_sucher -c "CREATE TABLE Users (
-      id BIGSERIAL PRIMARY KEY,
-      username VARCHAR(255) NOT NULL,
-      password VARCHAR(255) NOT NULL,
-      role VARCHAR(20) NOT NULL
-    );"
+    sudo -u postgres psql film_sucher -tc "SELECT 1 FROM information_schema.tables WHERE table_name = 'users'" | grep -q 1 || (
+      sudo -u postgres psql film_sucher -c "CREATE TABLE Users (
+        id BIGINT PRIMARY KEY,
+        username VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        role VARCHAR(20) NOT NULL
+      );" &&
+      sudo -u postgres psql film_sucher -c "CREATE SEQUENCE users_seq START WITH 1;" &&
+      sudo -u postgres psql film_sucher -c "ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_seq');"
+    )
+
     sudo -u postgres psql film_sucher -c "\copy Users(username, password, role) FROM '/tmp/initial_users.csv' DELIMITER ',' CSV HEADER"
 
 
