@@ -1,0 +1,5 @@
+- name: Config DBs
+  hosts: db
+  become: true
+  roles:
+    - deploy-elasticsearch

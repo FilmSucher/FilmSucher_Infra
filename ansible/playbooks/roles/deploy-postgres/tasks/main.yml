@@ -18,6 +18,8 @@
     sudo -u postgres psql -d film_sucher -c "GRANT USAGE ON SCHEMA public TO film_user;"
     sudo -u postgres psql -d film_sucher -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO film_user;"
     sudo -u postgres psql -d film_sucher -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO film_user;"
+    sudo -u postgres psql -d film_sucher -c "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO film_user;"
+    sudo -u postgres psql -d film_sucher -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE, SELECT ON SEQUENCES TO film_user;"
 
 - name: Copy films.csv to remote VM
   copy:
@@ -29,7 +31,7 @@
   become: true
   shell: |
     sudo -u postgres psql film_sucher -tc "SELECT 1 FROM information_schema.tables WHERE table_name = 'films'" | grep -q 1 || (
-      sudo -u postgres psql film_sucher -c "CREATE TABLE Films (
+      sudo -u postgres psql film_sucher -c "CREATE TABLE films (
         id BIGINT PRIMARY KEY,
         imdb_id VARCHAR(20),
         title VARCHAR(255) NOT NULL,
@@ -45,7 +47,7 @@
       sudo -u postgres psql film_sucher -c "ALTER TABLE films ALTER COLUMN id SET DEFAULT nextval('films_seq');"
     )
 
-    sudo -u postgres psql film_sucher -c "\copy Films(imdb_id, title, year, genre, duration, country, description, bild_url, rating) FROM '/tmp/initial_films.csv' DELIMITER ',' CSV HEADER"
+    sudo -u postgres psql film_sucher -c "\copy films(imdb_id, title, year, genre, duration, country, description, bild_url, rating) FROM '/tmp/initial_films.csv' DELIMITER ',' CSV HEADER"
    
 - name: Copy users.csv to remote VM
   copy:
@@ -57,7 +59,7 @@
   become: true
   shell: |
     sudo -u postgres psql film_sucher -tc "SELECT 1 FROM information_schema.tables WHERE table_name = 'users'" | grep -q 1 || (
-      sudo -u postgres psql film_sucher -c "CREATE TABLE Users (
+      sudo -u postgres psql film_sucher -c "CREATE TABLE users (
         id BIGINT PRIMARY KEY,
         username VARCHAR(255) NOT NULL,
         password VARCHAR(255) NOT NULL,
@@ -67,14 +69,14 @@
       sudo -u postgres psql film_sucher -c "ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_seq');"
     )
 
-    sudo -u postgres psql film_sucher -c "\copy Users(username, password, role) FROM '/tmp/initial_users.csv' DELIMITER ',' CSV HEADER"
+    sudo -u postgres psql film_sucher -c "\copy users(username, password, role) FROM '/tmp/initial_users.csv' DELIMITER ',' CSV HEADER"
 
 
 - name: Make table Favorites (if not exists)
   become: true
   shell: |
     sudo -u postgres psql film_sucher -tc "SELECT 1 FROM information_schema.tables WHERE table_name = 'favorites'" | grep -q 1 || \
-    sudo -u postgres psql film_sucher -c "CREATE TABLE Favorites (
+    sudo -u postgres psql film_sucher -c "CREATE TABLE favorites (
       film_id BIGINT NOT NULL,
       user_id BIGINT NOT NULL,
       added_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

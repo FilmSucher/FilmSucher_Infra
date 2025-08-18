@@ -1,0 +1,12 @@
+# DELETE DB and User 
+- name: Drop DB if exists
+  become: true
+  shell: |
+    sudo -u postgres psql -tc "SELECT 1 FROM pg_database WHERE datname = 'film_sucher'" | grep -q 1 && \
+    sudo -u postgres psql -c "DROP DATABASE film_sucher;" || echo "Database film_sucher does not exist"
+
+- name: Drop user if exists
+  become: true
+  shell: |
+    sudo -u postgres psql -tc "SELECT 1 FROM pg_roles WHERE rolname = 'film_user'" | grep -q 1 && \
+    sudo -u postgres psql -c "DROP ROLE film_user;" || echo "User film_user does not exist"

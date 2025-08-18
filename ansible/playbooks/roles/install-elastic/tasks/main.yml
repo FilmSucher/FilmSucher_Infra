@@ -15,8 +15,39 @@
     update_cache: yes
     state: present
 
-- name: Start app and service Elasticsearch
+- name: Ensure elasticsearch.yml exists
+  copy:
+    dest: /etc/elasticsearch/elasticsearch.yml
+    content: |
+      cluster.name: my-cluster
+      network.host: 0.0.0.0
+      http.port: 9200
+      xpack.security.enabled: false
+      xpack.security.http.ssl.enabled: false
+      xpack.security.transport.ssl.enabled: false
+      discovery.type: single-node
+    owner: elasticsearch
+    group: elasticsearch
+    mode: '0644'
+
+- name: Ensure Elasticsearch data directory exists
+  file:
+    path: /usr/share/elasticsearch/data
+    state: directory
+    owner: elasticsearch
+    group: elasticsearch
+    mode: '0755'
+
+- name: Ensure Elasticsearch logs directory exists
+  file:
+    path: /usr/share/elasticsearch/logs
+    state: directory
+    owner: elasticsearch
+    group: elasticsearch
+    mode: '0755'
+
+- name: Start Elasticsearch
   systemd:
     name: elasticsearch
-    enabled: true
     state: started
+    enabled: true

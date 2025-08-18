@@ -25,6 +25,7 @@
         User=root
         WorkingDirectory=/opt/auth
         Environment=JWT_SECRET=Super_Duper_Secret_Token_Key_For_HS256_Lead
+        Environment=JWT_VALIDITY=3600000
         Environment=SPRING_DATASOURCE_USERNAME=film_user
         Environment=SPRING_DATASOURCE_PASSWORD=film_user_password
         ExecStart=/usr/bin/java -jar /opt/auth/app.jar

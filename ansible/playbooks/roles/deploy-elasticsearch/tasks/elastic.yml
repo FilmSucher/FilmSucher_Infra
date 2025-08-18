@@ -1,6 +1,6 @@
 - name: Wait for Elasticsearch to be available
   uri:
-    url: https://localhost:9200
+    url: http://localhost:9200
     method: GET
     user: elastic
     password: elastic
@@ -15,7 +15,7 @@
 #MAKE INDEX AND FILL
 - name: Delete 'films' index if it exists
   uri:
-    url: https://localhost:9200/films
+    url: http://localhost:9200/films
     method: DELETE
     user: elastic
     password: elastic
@@ -25,7 +25,7 @@
   
 - name: Create Elasticsearch index for films
   uri:
-    url: https://localhost:9200/films
+    url: http://localhost:9200/films
     method: PUT
     user: elastic
     password: elastic
@@ -47,7 +47,7 @@
 
 - name: Load NDJSON in Elasticsearch
   uri:
-    url: https://localhost:9200/films/_bulk
+    url: http://localhost:9200/films/_bulk
     method: POST
     user: elastic
     password: elastic

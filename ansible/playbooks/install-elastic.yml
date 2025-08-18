@@ -1,0 +1,5 @@
+- name: Install Elastic
+  hosts: db
+  become: true
+  roles:
+    - install-elastic

@@ -1,0 +1,6 @@
+- name: Reset Postgres
+  hosts: db
+  become: true
+  roles:
+    - remove-postgres
+    - deploy-postgres
