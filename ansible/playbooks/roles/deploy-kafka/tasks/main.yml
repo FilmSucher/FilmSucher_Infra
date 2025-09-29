@@ -1,0 +1,66 @@
+- name: Create Kafka data directory for KRaft
+  file:
+    path: /var/lib/kafka/data
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+    
+- name: Ensure Kafka config directory exists
+  file:
+    path: /opt/kafka/config
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Copy Kafka server.properties
+  copy:
+    src: /shared/infra_kafka/server.properties
+    dest: /opt/kafka/config/server.properties
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Format Kafka KRaft storage
+  command: >
+    /opt/kafka/bin/kafka-storage.sh format
+    --cluster-id 12345678-1234-1234-1234-123456789abc
+    --config /opt/kafka/config/server.properties
+  args:
+    creates: /var/lib/kafka/data/meta.properties
+    
+- name: Create systemd service for Kafka (KRaft mode)
+  copy:
+    dest: /etc/systemd/system/kafka.service
+    content: |
+      [Unit]
+      Description=Apache Kafka server (KRaft mode)
+      After=network.target
+
+      [Service]
+      Type=simple
+      ExecStart=/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
+      ExecStop=/opt/kafka/bin/kafka-server-stop.sh
+      Restart=on-abnormal
+
+      [Install]
+      WantedBy=multi-user.target
+
+- name: Restart Kafka
+  systemd:
+    daemon_reload: true
+    enabled: true
+    name: kafka
+    state: restarted
+
+- name: Create Kafka topic "logs"
+  command: >
+    /opt/kafka/bin/kafka-topics.sh
+    --create
+    --topic logs
+    --bootstrap-server 192.168.56.104:9092
+    --replication-factor 1
+    --partitions 1
+  args:
+    creates: /var/lib/kafka/data/logs-topic-created

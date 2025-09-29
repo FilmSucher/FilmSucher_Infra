@@ -16,6 +16,7 @@ with open("/tmp/films_bulk.ndjson", "w", encoding="utf-8") as f:
     for row in films:
         index_cmd = {"index": {"_id": row[0]}}
         doc = {
+            "id": row[0],
             "title": row[1],
             "description": row[2],
             "country": row[3],

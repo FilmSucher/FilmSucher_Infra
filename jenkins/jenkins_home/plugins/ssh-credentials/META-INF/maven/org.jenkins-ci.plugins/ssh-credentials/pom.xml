@@ -27,7 +27,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>ssh-credentials</artifactId>
-  <version>359.v2191c4cf635f</version>
+  <version>361.vb_f6760818e8c</version>
   <packaging>hpi</packaging>
   <name>SSH Credentials Plugin</name>
   <description>Allows storage of SSH credentials in Jenkins</description>
@@ -56,7 +56,7 @@
   <scm>
     <connection>scm:git:https://github.com/jenkinsci/ssh-credentials-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/ssh-credentials-plugin.git</developerConnection>
-    <tag>2191c4cf635f13eaaf0f047787c0d0c1f5f40ebd</tag>
+    <tag>bf6760818e8c81e129bcb95dd4256f6aae541f39</tag>
     <url>https://github.com/jenkinsci/ssh-credentials-plugin</url>
   </scm>
   <distributionManagement>

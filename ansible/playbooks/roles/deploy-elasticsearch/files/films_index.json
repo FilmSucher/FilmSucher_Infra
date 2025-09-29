@@ -4,6 +4,7 @@
   },
   "mappings": {
     "properties": {
+	  "id": { "type": "long" },
       "title": { "type": "text" },
       "description": { "type": "text" },
       "country": { "type": "text" },

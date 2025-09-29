@@ -4,14 +4,14 @@ Build-Jdk-Spec: 17
 Specification-Title: SSH Credentials Plugin
 Specification-Version: 0.0
 Implementation-Title: SSH Credentials Plugin
-Implementation-Version: 359.v2191c4cf635f
+Implementation-Version: 361.vb_f6760818e8c
 Group-Id: org.jenkins-ci.plugins
 Artifact-Id: ssh-credentials
 Short-Name: ssh-credentials
 Long-Name: SSH Credentials Plugin
 Url: https://github.com/jenkinsci/ssh-credentials-plugin
 Compatible-Since-Version: 334.v7732563deee1
-Plugin-Version: 359.v2191c4cf635f
+Plugin-Version: 361.vb_f6760818e8c
 Hudson-Version: 2.479.1
 Jenkins-Version: 2.479.1
 Plugin-Dependencies: bouncycastle-api:2.30.1.79-254.vfdb_814e7791e,crede
@@ -23,7 +23,7 @@ Plugin-License-Name: MIT License
 Plugin-License-Url: https://opensource.org/licenses/MIT
 Plugin-ScmConnection: scm:git:https://github.com/jenkinsci/ssh-credentia
  ls-plugin.git
-Plugin-ScmTag: 2191c4cf635f13eaaf0f047787c0d0c1f5f40ebd
+Plugin-ScmTag: bf6760818e8c81e129bcb95dd4256f6aae541f39
 Plugin-ScmUrl: https://github.com/jenkinsci/ssh-credentials-plugin
-Implementation-Build: 2191c4cf635f13eaaf0f047787c0d0c1f5f40ebd
+Implementation-Build: bf6760818e8c81e129bcb95dd4256f6aae541f39
 

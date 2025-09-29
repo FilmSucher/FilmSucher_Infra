@@ -1,9 +1,9 @@
 Signature-Version: 1.0
 Created-By: 21.0.7 (Eclipse Adoptium)
-SHA-384-Digest-Manifest: jVKDamMdxR1I6sRFJ6rLCGUpwbxCwqbZqQLpP7lbjW+LWHU
- u+uwEhkEKajHLaIKv
-SHA-384-Digest-Manifest-Main-Attributes: 2chjdGtozLPQylrU0hwKZ/Jv+8Ayadk
- 6z6x/bLBoq9HgOlPHV8ru6tGxhq41ElJy
+SHA-384-Digest-Manifest: i9TZKnvigXZTC9Zic0ba6k+77w/91RU185djA6Ful4aY6Ff
+ KDnhSJDIyk+WNpyxc
+SHA-384-Digest-Manifest-Main-Attributes: 5f0jmaQ4zC7KG1E+DHeTHKplKA/QM58
+ z9vTg71W5fRqUPLDE3223UH+cLi9gFgzZ
 
 Name: help/project-config/downstream.html
 SHA-384-Digest: IuuqrdsQwFK79tc8Y81AMSfHDc328x0CxKZQm5c7P8ytAw5JnXHVPV7i
@@ -477,6 +477,10 @@ Name: help/project-config/disable_ru.html
 SHA-384-Digest: H9MUNV0Vze4Sdty+iFPpFgpTkCiu7DAK5JGWK62JzkEt7SxqXEUN0ODS
  yu6+tz0p
 
+Name: WEB-INF/lib/websocket-spi-2.516.3.jar
+SHA-384-Digest: wjvl6oj4dr+PyRUd5L1KkZk/DRl+5fx5m6kSbucPmlTEBvRWXjkTY4lE
+ boXMx7iO
+
 Name: help/parameter/choice.html
 SHA-384-Digest: UzRH+brrca4xM1oCfyG7s2c1oV2gkpQGfkDgL3w4n1IZbv8Yv5hReQzm
  QiZVevk/
@@ -630,8 +634,8 @@ SHA-384-Digest: D5C0HbXpKywSnK90ne3IefaKcOMwouDRex7KkFs3cj6aOv+T+vCRyd1N
  vOXQn49s
 
 Name: META-INF/maven/org.jenkins-ci.main/jenkins-war/pom.properties
-SHA-384-Digest: 2nR/tDZBQlXXZ89wwLdXgOQ6TMrCuKsziCKKhXhVPWW1gDCIds0CXpdn
- OyTklxks
+SHA-384-Digest: iBX9HiSkRIeUxsnejmRH437bTrQbjJWVZz5XxRPuotzZJKP1rh1PKmOt
+ e6/mzzGj
 
 Name: images/16x16/light-grey_anime.gif
 SHA-384-Digest: FPZtRbhTVLGL+61fPoS0XHGpbdQMqI8PpjDNEzn7t402y3VlPKjgcJyv
@@ -1094,8 +1098,8 @@ SHA-384-Digest: 9saB+en/Y30uXKeb2m1/hjSpi4g66M3bhv1VcVaYQXli9Cu4FBAxxq5H
  JmS/oyR6
 
 Name: jsbundles/app.js.map
-SHA-384-Digest: OJtyljQnk4gw0MbOFDev9SrH8tEbVJTDJBANMsc8bHGcKq36oQUOp4w0
- RFyr1O7l
+SHA-384-Digest: qdpstKS+ToFsmnR6JyWijstXZagZTWVW7JDFs3JGsBduiSDYnJ0MiVQy
+ zY5WRFRw
 
 Name: help/system-config/master-slave/description_pt_BR.html
 SHA-384-Digest: NosaYLa3o4seGO/kS4F83L0iI7atpZKAXoontW6jCxE25b+myccHJxLn
@@ -1148,10 +1152,6 @@ SHA-384-Digest: Cqzxy5JMN/NI8bvPo+ja89OU83NQ1hEgcmsujvUGBiDog0xEny9OToDE
 Name: images/32x32/nobuilt.gif
 SHA-384-Digest: KNbVUf1OFLunWo1jCbmlEddmPENxJluXqOcawvPYnXe1O/rDTcgUeqkb
  305tqifR
-
-Name: WEB-INF/lib/jenkins-core-2.516.1.jar
-SHA-384-Digest: YYp3S+jCmQRkJbSnQRpNuP/Rc6S+NguRiLSzqN0TgqbAYftI0hl44YxH
- u5xjDuz3
 
 Name: help/project-config/description_fr.html
 SHA-384-Digest: clkRzyRR9oRPwHj3r3bYU6dLpCVZ6lJCGMFoKvxvSEUju6D8lYHXaTId
@@ -1218,8 +1218,8 @@ SHA-384-Digest: aXlTtAQV8yL7mOrMldPjSPFQoulC7oHu0XSEwOApigQbnMQtmGuU8ccz
  BFl5v4FR
 
 Name: jsbundles/simple-page.css
-SHA-384-Digest: Xw2J6w2BjScDvF+sgsti8P6/0Yr9Zgb9s1P7jpvGqDaIumRPajRltZjK
- 5WEUUuqF
+SHA-384-Digest: faGa0ImeDSlsvweKeQ/kiSOW7mFL56O3JcqYBuIkLM9blw0KnzcP1Lbp
+ V/Tk4hVa
 
 Name: help/parameter/file_bg.html
 SHA-384-Digest: AcR2DK+sjzvi0gcE5tdQo56oqezwLiMz7W68yqHRGer+J2cKPIvRsfR2
@@ -1278,8 +1278,8 @@ SHA-384-Digest: dbsDzYv2iEjdaOeYD1LLnFq/simfpw6aIF5L05NmhvL7Y+gH7GW11ERe
  oTqYbaSY
 
 Name: jsbundles/simple-page.css.map
-SHA-384-Digest: 5nbYjqcBAxaasKNUDQUzZEjcAcOTS+EVfu0pT1/g1TyPvPie63Ni4kdX
- B2GBK2kW
+SHA-384-Digest: ee1HnSwlgU+aEE7CYRcSm65XtfW3R2ab831VoxlNRu41ipUoVzPGaf6e
+ xOsEF/B6
 
 Name: help/parameter/description.html
 SHA-384-Digest: pBjinhZVrwoQFp4JRVk0+cw22GZEzzmAzAPJW2J4I+jJ3fm2OflqH8Gc
@@ -1546,8 +1546,8 @@ SHA-384-Digest: duD6lm25tv+klw6auKx6Lj9k24Nl4Mi7ArhS3Vrb3wbBdstxcnSbwdUw
  84Yd95Fs
 
 Name: META-INF/maven/org.jenkins-ci.main/jenkins-war/pom.xml
-SHA-384-Digest: PGLuh4f3qgvfUnND/JuOALIiUhAcHE7qxHUhwddJ1+h4SE4+uJdN4a05
- vu/v9neu
+SHA-384-Digest: IWIPLiDofZofvCefgTpZrlhcZzD43eRdu5r3f4BNcZ6KYTM5gI3XbasZ
+ pipAX7VA
 
 Name: help/project-config/batch_fr.html
 SHA-384-Digest: MU9Y+dy8h8rt836awtreMZkV5p6zkQpJ47ijajpkOBM1T7fhAto20Q01
@@ -1894,12 +1894,12 @@ SHA-384-Digest: MIOYbW6kx2RP2Ppklv4bG+BRrgCYSOfXTyEa1KOpa83YmWQeJkDD1nUA
  T82g/fYC
 
 Name: jsbundles/styles.css.map
-SHA-384-Digest: /39NdZQdi84mTx3trbor7J0/UJFG9qpGhRX4p3v5Nrn8y0G+0ZkNRLxS
- ZVigENCR
+SHA-384-Digest: mlxegCHLBsxYLKeg7EHhbKJdmcxIGTbyobrQmWnzxO7jCIy+Oh3gGpLr
+ j2n2z7Jd
 
 Name: jsbundles/header.js.map
-SHA-384-Digest: 4KwydoWBt7SrHYF6ZMGl8GH45YWwc2en/oPTfIpWzl/1wOCzDosKrXlW
- 3d9UHxBs
+SHA-384-Digest: hr1Ec9hN9deNYOJ55rUxj/IPtnQy4sGDQjWumWyAIKba3diIIF+3wAfm
+ /00SdHdH
 
 Name: help/LogRecorder/logger_fr.html
 SHA-384-Digest: jHiP4Ax2KGu/WF7qq/tW7pC61h6yXe0E3iNb0wfW77lFbsaOxnrH7Npp
@@ -2029,10 +2029,6 @@ Name: WEB-INF/classes/images/symbols/journal.svg
 SHA-384-Digest: IJFEDTLhjU+bupMwgNJGDvRjZsaRLk8fqx0aJkJKKYLdITkkn0H3uwjQ
  8cXTKytc
 
-Name: WEB-INF/lib/websocket-jetty12-ee9-2.516.1.jar
-SHA-384-Digest: IdgNg7lORQZ+JkhDaPBaOJVtE2y5fWcLaOk9TQKpRjqYukqLbVSRQ8IB
- MF9qfvIE
-
 Name: help/view-config/includeregex_tr.html
 SHA-384-Digest: JGplREwWR8DgYIhGC9iIuAmq3B3a8ywGl9MqX7z+jbQwgZevG4ZS4p91
  wi1DYNy5
@@ -2114,8 +2110,8 @@ SHA-384-Digest: vrUbp8Mrr3lh+qpfVFU2osz4Ms3DmZQaoQxje/pxBWy/rxTCdXagvOw8
  xZ9B34EY
 
 Name: jsbundles/header.js
-SHA-384-Digest: dejR164RDKdHg4BVoHXYgJGNy7JIEWMqvyxUGu7QqeGhFcey2M3vN6YJ
- FQoId14L
+SHA-384-Digest: B0/4S0DECsAHM8x34V79AUAcjNlihcTn76ELXwGiytAWu17RHx1FcLrW
+ p2uswzN4
 
 Name: WEB-INF/classes/images/symbols/play.svg
 SHA-384-Digest: 9DuH4UDse91aHAxXTYr7B+Sxjct0bwBbOsnS2TREPQ/fEXmUteXRKAAF
@@ -2312,10 +2308,6 @@ SHA-384-Digest: 0C6dnM9JLcfYCFAw9+6uXW+3V64i/e8TYPrQK2dS6Log9DwiSiRApCAr
 Name: images/48x48/red_anime.gif
 SHA-384-Digest: 6IMU6oAw91tojdr622kjn3eduo0kPmmyucdUThHxBYkSt67XfUFigOFZ
  Brk1f/Jf
-
-Name: WEB-INF/lib/cli-2.516.1.jar
-SHA-384-Digest: kPC8L35gMEp0NfXFpbrPX3+MAul35KYZc5AQcYghLm9n53WyiSXYpDOG
- wzyspQj/
 
 Name: help/parameter/run-project_de.html
 SHA-384-Digest: lnoEqqNrDPI8E7Z7cbhVX3eNPjQ9L4udLkU28ty4ZxNGRh7Dle6yU4kQ
@@ -2617,9 +2609,17 @@ Name: WEB-INF/lib/jline-2.14.6.jar
 SHA-384-Digest: RwPdhxPxQP+Pcz5Cc5nvO0gmIMrOR0tWRbzWu00zfbXVj68lYWbL6E8R
  niXgTUcm
 
+Name: WEB-INF/lib/jenkins-core-2.516.3.jar
+SHA-384-Digest: 4c+FcOi0yWH6HAfa2GBpFLr/vUYxfnZp4bzlAwZCkYUz3QcRPBipvhBe
+ rNQ1+80A
+
 Name: help/parameter/string_zh_TW.html
 SHA-384-Digest: Othgunf36Kn3o8ya4E8TZFDMsL0YAeNB8ZjBr5Mdl1/ksVOUA3FXVDWj
  6Vt2ownh
+
+Name: WEB-INF/lib/websocket-jetty12-ee9-2.516.3.jar
+SHA-384-Digest: SODEsNgV+GVZSjuJ6QH0dbrkRDEhC30GGGH0NJwn2XmbM/kM9dOWkcOu
+ mqAt26st
 
 Name: WEB-INF/classes/images/symbols/status-yellow-anime.svg
 SHA-384-Digest: ccm8VV720PnIktSkCxrh2bR/C0Pdp9BsOcPKxG48K6d2q8fNGEtRR0P+
@@ -2690,8 +2690,8 @@ SHA-384-Digest: BJjSIy5yp/+g7Vmf/EKoMzXm7PAgEu7WOxrveHdQzZnbg07MCqM6AvHW
  +Xt0CfXg
 
 Name: WEB-INF/classes/META-INF/licenses.html
-SHA-384-Digest: iJkD28TMdn+NyQk/gKF6Xmo/Q5O4G4g/CEazpp4kAaCJN5Bqb6d9Rj8R
- 4QbVB/I+
+SHA-384-Digest: qg8aKksOOcLUjPRrLVQmO3fQ7BYBsB/r/QglID9QAewBlhIaCPIsJEUw
+ Nzp+uRda
 
 Name: WEB-INF/lib/jcip-annotations-1.0.jar
 SHA-384-Digest: c0x/BFfdQzUFNqg+PEWk2Z0C2s0432izqHMVOSEzgpBg6LzStM70Stss
@@ -2886,8 +2886,8 @@ SHA-384-Digest: iDFkh7hmQ9R6GsiRCh4eCnkDs2SlVXZOBv9JGnU9lh2h2SdI20sZklZc
  ew67g0ou
 
 Name: WEB-INF/classes/META-INF/licenses.xml
-SHA-384-Digest: N2iIg5XC5ZYwBX4Kq8LsgM3x9e/TQsW7762uylvLHnZCt3mSXuHbRTL1
- kzJOSdQh
+SHA-384-Digest: 8p9PSduzKc3UEhnXUVcIe1Lad7nSX6b0aTU3LsPVDhOPXjXE3cuyvVv/
+ tSpD72qJ
 
 Name: help/system-config/nodeEnvironmentVariables.html
 SHA-384-Digest: /o6mZjjLBQMPiibYkd/92oDEUGZYJEQphwrkV2Tr0+wgzPLoik2b3LvL
@@ -2990,8 +2990,8 @@ SHA-384-Digest: gGetSYEKEqS/3bIOEefWoQtr5m8WKmfoPOCP1mIo57k2brHuAFeIicJQ
  OY4Cyy1w
 
 Name: WEB-INF/classes/dependencies.txt
-SHA-384-Digest: 0GzK4L9Ik5I2N3N4cK0DrBqrYqf9GTvLHLemdGWY/U6lsSvR5+VbYdYB
- 8zBiwKLB
+SHA-384-Digest: LYBArbhQpFH2MI8NBCT4xAzzcuvw3b//HYbh9zRWOQqEWqNjngTXWbpy
+ 5a3tSRny
 
 Name: WEB-INF/classes/images/symbols/code-working.svg
 SHA-384-Digest: JAcAHg0MBcKavWeaMGWqNhUi08wIXPoggyECvsCNMM0gDqP8B+9bxcSp
@@ -3287,8 +3287,8 @@ SHA-384-Digest: t14GYUQDGA0EI1eZ8HRl3/6VmG00uXY98Ht/EUYZO3DU8jAgoT6E2hKN
  PYhF5s5J
 
 Name: WEB-INF/web.xml
-SHA-384-Digest: YksWlF6dhre8rrq1yGV4uvxFPR7gvfn/Q6iZDzL39Ue3ASoKP84DDDWP
- vvKI/xsH
+SHA-384-Digest: lnblnKNrbfmES6HWeDC1TI7MR5Ph78AdODXtvu/JAvLKIZ4XKiHPYtNh
+ Qjh3B6lV
 
 Name: help/tasks/fingerprint/keepDependencies_de.html
 SHA-384-Digest: Vjbh/S5BFf7jKWAVt16PBmUGNoMgfSqeXWgahElcDcEg/HIA5CDGk2MM
@@ -3402,10 +3402,6 @@ Name: WEB-INF/lib/xpp3-1.1.4c.jar
 SHA-384-Digest: v/yt5O2nih0XHs4eskl/nzvnW70cThbqk4kRQAGxVhsyqmVfpNab5aHz
  ldtTEFUC
 
-Name: WEB-INF/lib/websocket-spi-2.516.1.jar
-SHA-384-Digest: YFWw2uPcI8F6HUm+vmHohlBgDYwsMqOI1cqglHKnTG/i483jNaifWP//
- bSmU3G5j
-
 Name: WEB-INF/classes/images/symbols/weather-icon-health-80plus.svg
 SHA-384-Digest: qYzOPMy2UJwHEsD3BaVlvfsISkVh1wId75qhfjypg6P+UvVeIFFUMAmM
  jc/+8BP2
@@ -3479,8 +3475,8 @@ SHA-384-Digest: cTzO1SbkZF+mgCXoJfnnyiXjxYb0QRi4zC2v9ttvaTRlZc/4S2zy7yPI
  yvg+X1e3
 
 Name: executable/winstone.jar
-SHA-384-Digest: z2TqVh8HWYNq8w8yH4WdYBf+AFCxMPMO4G2Pkqws3AjVxbGDp8CHrYsy
- vDFt5Xe5
+SHA-384-Digest: PSgtUFssPNZ7fVwW6dxzudVaJRWT53i4j6UqJ+66XATw4+LFPtHXCRIz
+ 6AIe1rJp
 
 Name: WEB-INF/classes/images/symbols/hammer.svg
 SHA-384-Digest: gFaEXIbgYAUPTyzcx6mB9WaLFwW3WywXM75gVJOkQ3LdyspSyLcKBYrH
@@ -3539,8 +3535,8 @@ SHA-384-Digest: D92KI5IExK+MW1vD1de2iY6htvfzZmQhcuN4sHdi39m0jKUgqCVXmWZW
  TOrTTmC3
 
 Name: jsbundles/styles.css
-SHA-384-Digest: FtAB016EsR9x5CL+VAz2Dbq4/IWOYtdi+4fe7Br4f2Cdx/7M2zqXPT2f
- 92VOu4px
+SHA-384-Digest: RN6+U3VFYlnIz8OKAdDiiap/9e/Tpb/zIn21AvHIvJuTlwcsT0YXROBJ
+ F3MoIq9X
 
 Name: WEB-INF/lib/guice-6.0.0.jar
 SHA-384-Digest: VzQ9PSn+F9jm2o379yZggh+HebUaeweUblPB4rcjUXX8wPHeQA0+74l7
@@ -3751,8 +3747,8 @@ SHA-384-Digest: 7Yqkv766lYuepOxCqj77Ov9XKku36pUYW761+etVYPue3GzY5XRoCI/o
  RH2erkBx
 
 Name: jsbundles/app.js
-SHA-384-Digest: v7+prmpItcUin6k4ZD2Eo07jmE5fLmKy4gcihsLdanRtS1o7AtKqxX9/
- dMC3F/JX
+SHA-384-Digest: b4SnW07w8W6zkS29nX0dFSjjzT44TfnIqiqqiLv9CAvdIeqSTIcffCiI
+ v3/yp4m4
 
 Name: WEB-INF/classes/images/symbols/menu.svg
 SHA-384-Digest: ueEz38I8Ttmn87g82POW86Jq+wgANzICjVH0j1hirwZC0Ru0QhRghEyv
@@ -3765,6 +3761,10 @@ SHA-384-Digest: yaRwZlDdCwE4Qr7EuSpN9IcF/RizQJt5T8c0T6K4MtnE4SlD2eo+QUuu
 Name: WEB-INF/classes/images/symbols/arrow-up.svg
 SHA-384-Digest: utZrDi+1jj8lRfkE/l2reCoxhvHWi1r7bpbcvmD3yNAULCxXDbvmuSW+
  nNzVUlyJ
+
+Name: WEB-INF/lib/cli-2.516.3.jar
+SHA-384-Digest: 3IytM2x7lfP+vjrGtUrba8lAUzGbCvo5d185mdAO3kdSsxm0fQqXPyse
+ LJmzRi8i
 
 Name: images/svgs/certificate.svg
 SHA-384-Digest: 1Ah5NEVN0f4x+MiewY9DqDc8nzx5NWGY4a+/vN2VfCDexYsojmiYCy2p

@@ -1,0 +1,7 @@
+- name: Deploy of the Logging-instruments
+  hosts: infra
+  become: true
+  roles:
+    - deploy-kafka
+    - deploy-logstash
+    - deploy-kibana

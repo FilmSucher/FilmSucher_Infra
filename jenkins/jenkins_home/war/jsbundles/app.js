@@ -113,10 +113,6 @@ function dropdown() {
       if (referenceParent.classList.contains("model-link")) {
         referenceParent.classList.add("model-link--open");
       }
-    },
-    onHide: instance => {
-      const referenceParent = instance.reference.parentNode;
-      referenceParent.classList.remove("model-link--open");
     }
   };
 }
@@ -274,29 +270,19 @@ function generateDropdown(element, callback, immediate, options = {}) {
     element._tippy.destroy();
   }
   (0,tippy_esm/* default */.Ay)(element, Object.assign({}, templates.dropdown(), {
-    hideOnClick: element.dataset["hideOnClick"] !== "false" ? "toggle" : false,
     onCreate(instance) {
       const onload = () => {
         if (instance.loaded) {
           return;
         }
         document.addEventListener("click", event => {
-          const isClickInAnyDropdown = !!event.target.closest("[data-tippy-root]");
           const isClickOnReference = instance.reference.contains(event.target);
-          if (!isClickInAnyDropdown && !isClickOnReference) {
+          // Don't close the dropdown if the user is interacting with a SELECT menu inside of it
+          const isSelect = event.target.tagName === "SELECT";
+          if (!isClickOnReference && !isSelect) {
+            instance.clickToHide = true;
             instance.hide();
           }
-        });
-        instance.popper.addEventListener("mouseenter", () => {
-          const handleMouseMove = () => {
-            const dropdowns = document.querySelectorAll("[data-tippy-root]");
-            const isMouseOverAnyDropdown = Array.from(dropdowns).some(dropdown => dropdown.matches(":hover"));
-            if (!isMouseOverAnyDropdown) {
-              instance.hide();
-              document.removeEventListener("mousemove", handleMouseMove);
-            }
-          };
-          document.addEventListener("mousemove", handleMouseMove);
         });
         callback(instance);
       };
@@ -308,10 +294,16 @@ function generateDropdown(element, callback, immediate, options = {}) {
         });
       }
     },
-    onHide() {
-      const dropdowns = document.querySelectorAll("[data-tippy-root]");
-      const isMouseOverAnyDropdown = Array.from(dropdowns).some(dropdown => dropdown.matches(":hover"));
-      return !isMouseOverAnyDropdown;
+    onHide(instance) {
+      const referenceParent = instance.reference.parentNode;
+      referenceParent.classList.remove("model-link--open");
+      if (instance.props.trigger === "mouseenter" && !instance.clickToHide) {
+        const dropdowns = document.querySelectorAll("[data-tippy-root]");
+        const isMouseOverAnyDropdown = Array.from(dropdowns).some(dropdown => dropdown.matches(":hover"));
+        return !isMouseOverAnyDropdown;
+      }
+      instance.clickToHide = false;
+      return true;
     }
   }, options));
 }
@@ -516,11 +508,11 @@ function generateJumplistAccessors() {
  */
 function generateDropdowns() {
   behavior_shim.specify(".hoverable-model-link, .hoverable-children-model-link", "-hoverable-dropdown-", 1000, element => utils.generateDropdown(element, instance => {
-    const href = element.href;
     if (element.items) {
       instance.setContent(utils.generateDropdownItems(element.items));
       return;
     }
+    const href = element.href;
     const hasModelLink = element.classList.contains("hoverable-model-link");
     const hasChildrenLink = element.classList.contains("hoverable-children-model-link");
     const sections = {
@@ -561,7 +553,7 @@ function generateDropdowns() {
     }).finally(() => {
       instance.loaded = true;
     });
-  }, false, {
+  }, element.items != null, {
     trigger: "mouseenter",
     offset: [-16, 10],
     animation: "tooltip",
@@ -647,18 +639,15 @@ function mapChildrenItemsToDropdownItems(items) {
  * sections on the page (if using <f:breadcrumb-config-outline />)
  */
 function inpage_jumplist_init() {
-  const inpageNavigationBreadcrumb = document.querySelector("#inpage-nav");
+  const inpageNavigationBreadcrumb = document.querySelector("#inpage-nav span");
   if (inpageNavigationBreadcrumb) {
-    const chevron = document.createElement("li");
-    chevron.classList.add("children");
-    chevron.items = Array.from(document.querySelectorAll("form > div > .jenkins-section > .jenkins-section__title")).map(section => {
+    inpageNavigationBreadcrumb.items = Array.from(document.querySelectorAll("form > div > .jenkins-section > .jenkins-section__title")).map(section => {
       section.id = toId(section.textContent);
       return {
         label: section.textContent,
         url: "#" + section.id
       };
     });
-    inpageNavigationBreadcrumb.after(chevron);
   }
 }
 /* harmony default export */ var inpage_jumplist = ({
@@ -1057,7 +1046,6 @@ function autocomplete_init() {
   }
   behavior_shim.specify("INPUT.auto-complete", "input-auto-complete", 0, function (e) {
     e.setAttribute("autocomplete", "off");
-    e.dataset["hideOnClick"] = "false";
     // form field with auto-completion support
     e.style.position = "relative";
     // otherwise menu won't hide on tab with nothing selected

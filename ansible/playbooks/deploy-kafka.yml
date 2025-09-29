@@ -1,0 +1,5 @@
+- name: Deployment of the Kafka
+  hosts: infra
+  become: true
+  roles:
+    - deploy-kafka

@@ -1,0 +1,11 @@
+- name: Install und deployment of the Logging-instruments
+  hosts: infra
+  become: true
+  roles:
+    - install-java
+    - install-kafka
+    - install-logstash
+    - install-kibana
+    - deploy-kafka
+    - deploy-logstash
+    - deploy-kibana

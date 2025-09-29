@@ -1,0 +1,5 @@
+- name: Deployment of the Logstash
+  hosts: infra
+  become: true
+  roles:
+    - deploy-logstash

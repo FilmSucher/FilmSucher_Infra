@@ -1,0 +1,16 @@
+- name: Copy Logstash logstash.conf
+  copy:
+    src: /shared/infra_logstash/logstash.conf
+    dest: /etc/logstash/conf.d/logstash.conf
+    owner: root
+    group: root
+    mode: '0644'
+  
+- name: Test Logstash config syntax
+  command: /usr/share/logstash/bin/logstash --config.test_and_exit -f /etc/logstash/conf.d/
+
+- name: Restart Logstash
+  systemd:
+    name: logstash
+    state: restarted
+    enabled: true

@@ -1,0 +1,75 @@
+pipeline {
+    agent any
+
+    stages {
+	
+		stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+		stage('Copy Kafka to Ansible container') {
+            steps {
+                sh '''
+					rm -rf /shared/infra_kafka/server.properties
+					cp -r kafka/server.properties /shared/infra_kafka/server.properties
+                '''
+            }
+        }
+		
+		stage('Deploy Kafka via Ansible') {
+            steps {
+                sh '''
+                    docker exec ansible \
+                      ansible-playbook -i inventory.ini playbooks/deploy-kafka.yml -v
+                '''
+            }
+        }
+		
+		stage('Copy Logstash to Ansible container') {
+            steps {
+                sh '''
+					rm -rf /shared/infra_logstash/logstash.conf
+					cp -r logstash/logstash.conf /shared/infra_logstash/logstash.conf
+                '''
+            }
+        }
+		
+		stage('Deploy Logstash via Ansible') {
+            steps {
+                sh '''
+                    docker exec ansible \
+                      ansible-playbook -i inventory.ini playbooks/deploy-logstash.yml -v
+                '''
+            }
+        }
+		
+		stage('Copy Kibana to Ansible container') {
+            steps {
+                sh '''
+					rm -rf /shared/infra_kibana/kibana.yml
+					cp -r kibana/kibana.yml /shared/infra_kibana/kibana.yml
+                '''
+            }
+        }
+		
+		stage('Deploy Kibana via Ansible') {
+            steps {
+                sh '''
+                    docker exec ansible \
+                      ansible-playbook -i inventory.ini playbooks/deploy-kibana.yml -v
+                '''
+            }
+        }
+    }
+	
+	post {
+        failure {
+            echo 'Deploy failed.'
+        }
+        success {
+            echo 'Infra deployed successfully.'
+        }
+    }
+}

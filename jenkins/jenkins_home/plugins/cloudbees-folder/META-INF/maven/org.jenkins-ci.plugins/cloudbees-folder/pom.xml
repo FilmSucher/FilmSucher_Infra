@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>cloudbees-folder</artifactId>
-  <version>6.1036.vb_94fd035b_287</version>
+  <version>6.1040.v8a_e6330a_54e3</version>
   <packaging>hpi</packaging>
   <name>Folders Plugin</name>
   <description>This plugin allows users to create "folders" to organize jobs. Users can define custom taxonomies (like
@@ -20,7 +20,7 @@
   <scm>
     <connection>scm:git:https://github.com/jenkinsci/cloudbees-folder-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/cloudbees-folder-plugin.git</developerConnection>
-    <tag>b94fd035b287f87a02c5a8d9ceb417b7585dfb08</tag>
+    <tag>8ae6330a54e36daf3855d4a0ac81c6290ffc3de7</tag>
     <url>https://github.com/jenkinsci/cloudbees-folder-plugin</url>
   </scm>
   <distributionManagement>

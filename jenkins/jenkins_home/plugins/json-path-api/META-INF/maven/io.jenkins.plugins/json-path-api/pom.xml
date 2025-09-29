@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.jenkins.plugins</groupId>
   <artifactId>json-path-api</artifactId>
-  <version>2.9.0-178.vca_b_c71881321</version>
+  <version>2.9.0-190.veefca_05d5477</version>
   <packaging>hpi</packaging>
   <name>JSON Path API Plugin</name>
   <description>The Jenkins Plugins Parent POM Project</description>
@@ -19,7 +19,7 @@
   <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
     <connection>scm:git:https://github.com/jenkinsci/json-path-api-plugin</connection>
     <developerConnection>scm:git:https://github.com/jenkinsci/json-path-api-plugin</developerConnection>
-    <tag>cabc71881321949799302963dfd3bfc66e585c4a</tag>
+    <tag>eefca05d547711ee2ea47f5dbc976874ee4be15a</tag>
     <url>https://github.com/jenkinsci/json-path-api-plugin</url>
   </scm>
   <distributionManagement>
@@ -68,25 +68,25 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>asm-api</artifactId>
-      <version>9.8-135.vb_2239d08ee90</version>
+      <version>9.8-163.vb_2a_96d3f9c3c</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>net.minidev</groupId>
       <artifactId>accessors-smart</artifactId>
-      <version>2.5.2</version>
+      <version>2.6.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>net.minidev</groupId>
       <artifactId>json-smart</artifactId>
-      <version>2.5.2</version>
+      <version>2.6.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>net.minidev</groupId>
       <artifactId>json-smart-action</artifactId>
-      <version>2.5.2</version>
+      <version>2.6.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -113,7 +113,7 @@
       <plugin>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>maven-hpi-plugin</artifactId>
-        <version>3.66</version>
+        <version>3.1746.v2e9fe7dc4d95</version>
         <extensions>true</extensions>
       </plugin>
     </plugins>

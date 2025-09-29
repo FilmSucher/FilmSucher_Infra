@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>structs</artifactId>
-  <version>350.v3b_30f09f2363</version>
+  <version>353.v261ea_40a_80fb_</version>
   <packaging>hpi</packaging>
   <name>Structs Plugin</name>
   <description>Library plugin for DSL plugins that need names for Jenkins objects.</description>
@@ -19,7 +19,7 @@
   <scm>
     <connection>scm:git:https://github.com/jenkinsci/structs-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/structs-plugin.git</developerConnection>
-    <tag>3b30f09f236391c651495d5c76d79d20dd4d7448</tag>
+    <tag>261ea40a80fb762dc77451d349cd33f8a747c739</tag>
     <url>https://github.com/jenkinsci/structs-plugin</url>
   </scm>
   <distributionManagement>
@@ -57,7 +57,7 @@
       <plugin>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>maven-hpi-plugin</artifactId>
-        <version>3.61</version>
+        <version>3.66</version>
         <extensions>true</extensions>
       </plugin>
     </plugins>

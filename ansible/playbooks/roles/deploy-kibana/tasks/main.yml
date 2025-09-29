@@ -1,0 +1,13 @@
+- name: Copy Kibana kibana.yml
+  copy:
+    src: /shared/infra_kibana/kibana.yml
+    dest: /etc/kibana/kibana.yml
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Restart Kibana
+  systemd:
+    name: kibana
+    state: restarted
+    enabled: true

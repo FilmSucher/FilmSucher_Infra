@@ -27,7 +27,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>branch-api</artifactId>
-  <version>2.1233.vfb_6b_2b_3ed499</version>
+  <version>2.1244.vf95c81f1641c</version>
   <packaging>hpi</packaging>
   <name>Branch API Plugin</name>
   <description>This plugin provides an API for multiple branch based projects.</description>
@@ -49,7 +49,7 @@
   <scm>
     <connection>scm:git:https://github.com/jenkinsci/branch-api-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/branch-api-plugin.git</developerConnection>
-    <tag>fb6b2b3ed49912dfc7002222f8a41242c2f0f93d</tag>
+    <tag>f95c81f1641c6fcae3859f45be1a235bd796e45b</tag>
     <url>https://github.com/jenkinsci/branch-api-plugin</url>
   </scm>
   <distributionManagement>
@@ -72,13 +72,19 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>cloudbees-folder</artifactId>
-      <version>6.1034.v4159e5986617</version>
+      <version>6.1036.vb_94fd035b_287</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>caffeine-api</artifactId>
       <version>3.2.0-166.v72a_6d74b_870f</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>commons-lang3-api</artifactId>
+      <version>3.17.0-87.v5cf526e63b_8b_</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

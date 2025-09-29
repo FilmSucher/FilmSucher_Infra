@@ -1,0 +1,18 @@
+# ======================== Server ========================
+server.host: "0.0.0.0"
+server.port: 5601
+# ======================== Elasticsearch ========================
+elasticsearch.hosts: ["http://192.168.56.103:9200"]
+
+# ======================== Logging ========================
+logging.level: info
+logging.dest: /var/log/kibana/kibana.log
+
+# ======================== X-Pack Security ========================
+# xpack.security.enabled: true
+
+# ======================== Misc ========================
+elasticsearch.requestTimeout: 30000
+
+# ======================== Telemetry ========================
+telemetry.enabled: false

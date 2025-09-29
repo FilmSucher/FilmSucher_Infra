@@ -1,0 +1,5 @@
+- name: Deployment of the Kibana
+  hosts: infra
+  become: true
+  roles:
+    - deploy-kibana

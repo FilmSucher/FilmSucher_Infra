@@ -97,10 +97,6 @@ function dropdown() {
       if (referenceParent.classList.contains("model-link")) {
         referenceParent.classList.add("model-link--open");
       }
-    },
-    onHide: instance => {
-      const referenceParent = instance.reference.parentNode;
-      referenceParent.classList.remove("model-link--open");
     }
   };
 }
@@ -269,29 +265,19 @@ function generateDropdown(element, callback, immediate, options = {}) {
     element._tippy.destroy();
   }
   (0,tippy_esm/* default */.Ay)(element, Object.assign({}, templates.dropdown(), {
-    hideOnClick: element.dataset["hideOnClick"] !== "false" ? "toggle" : false,
     onCreate(instance) {
       const onload = () => {
         if (instance.loaded) {
           return;
         }
         document.addEventListener("click", event => {
-          const isClickInAnyDropdown = !!event.target.closest("[data-tippy-root]");
           const isClickOnReference = instance.reference.contains(event.target);
-          if (!isClickInAnyDropdown && !isClickOnReference) {
+          // Don't close the dropdown if the user is interacting with a SELECT menu inside of it
+          const isSelect = event.target.tagName === "SELECT";
+          if (!isClickOnReference && !isSelect) {
+            instance.clickToHide = true;
             instance.hide();
           }
-        });
-        instance.popper.addEventListener("mouseenter", () => {
-          const handleMouseMove = () => {
-            const dropdowns = document.querySelectorAll("[data-tippy-root]");
-            const isMouseOverAnyDropdown = Array.from(dropdowns).some(dropdown => dropdown.matches(":hover"));
-            if (!isMouseOverAnyDropdown) {
-              instance.hide();
-              document.removeEventListener("mousemove", handleMouseMove);
-            }
-          };
-          document.addEventListener("mousemove", handleMouseMove);
         });
         callback(instance);
       };
@@ -303,10 +289,16 @@ function generateDropdown(element, callback, immediate, options = {}) {
         });
       }
     },
-    onHide() {
-      const dropdowns = document.querySelectorAll("[data-tippy-root]");
-      const isMouseOverAnyDropdown = Array.from(dropdowns).some(dropdown => dropdown.matches(":hover"));
-      return !isMouseOverAnyDropdown;
+    onHide(instance) {
+      const referenceParent = instance.reference.parentNode;
+      referenceParent.classList.remove("model-link--open");
+      if (instance.props.trigger === "mouseenter" && !instance.clickToHide) {
+        const dropdowns = document.querySelectorAll("[data-tippy-root]");
+        const isMouseOverAnyDropdown = Array.from(dropdowns).some(dropdown => dropdown.matches(":hover"));
+        return !isMouseOverAnyDropdown;
+      }
+      instance.clickToHide = false;
+      return true;
     }
   }, options));
 }
