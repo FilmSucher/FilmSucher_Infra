@@ -1,0 +1,56 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+# Metrics from VMs
+  - job_name: 'node-frontend'
+    honor_labels: true
+    static_configs:
+      - targets: ['192.168.56.101:9100'] # node_exporter
+
+  - job_name: 'node-backend'
+    honor_labels: true
+    static_configs:
+      - targets: ['192.168.56.102:9100']
+      
+  - job_name: 'node-db'
+    honor_labels: true
+    static_configs:
+      - targets: ['192.168.56.103:9100']
+
+  - job_name: 'node-infra'
+    honor_labels: true
+    static_configs:
+      - targets: ['192.168.56.104:9100']
+
+# Metrics from services
+
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['192.168.56.101:9113']  # nginx_exporter
+
+  - job_name: 'auth-spring'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['192.168.56.102:8080']
+      
+  - job_name: 'catalog-spring'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['192.168.56.102:8081']
+
+  - job_name: 'postgres'
+    honor_labels: true
+    static_configs:
+      - targets: ['192.168.56.103:9187']  # postgres_exporter
+
+  - job_name: 'elasticsearch'
+    static_configs:
+      - targets: ['192.168.56.103:9114']  # elasticsearch_exporter
+
+  - job_name: 'kafka'
+    honor_labels: true
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['192.168.56.104:9308']  # kafka_exporter

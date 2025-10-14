@@ -1,0 +1,13 @@
+- name: Copy Filebeat filebeat.yml
+  copy:
+    src: /shared/infra_filebeat/filebeat_{{ inventory_hostname }}.yml
+    dest: /etc/filebeat/filebeat.yml
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Restart Filebeat
+  systemd:
+    name: filebeat
+    state: restarted    
+    enabled: true

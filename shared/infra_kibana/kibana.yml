@@ -5,8 +5,17 @@ server.port: 5601
 elasticsearch.hosts: ["http://192.168.56.103:9200"]
 
 # ======================== Logging ========================
-logging.level: info
-logging.dest: /var/log/kibana/kibana.log
+logging:
+  appenders:
+    file:
+      type: file
+      fileName: /var/log/kibana/kibana.log
+      layout:
+        type: pattern
+        pattern: "[%date][%level][%logger] %message"
+  root:
+    level: info
+    appenders: [default, file]
 
 # ======================== X-Pack Security ========================
 # xpack.security.enabled: true

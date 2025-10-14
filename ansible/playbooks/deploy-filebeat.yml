@@ -1,0 +1,5 @@
+- name: Deploy Filebeat
+  hosts: db, infra, frontend
+  become: true
+  roles:
+    - deploy-filebeat

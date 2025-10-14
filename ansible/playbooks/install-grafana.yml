@@ -1,0 +1,5 @@
+- name: Install Grafana
+  hosts: infra
+  become: true
+  roles:
+    - install-grafana

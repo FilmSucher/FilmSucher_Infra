@@ -1,0 +1,5 @@
+- name: Deploy Prometheus
+  hosts: infra
+  become: true
+  roles:
+    - deploy-prometheus

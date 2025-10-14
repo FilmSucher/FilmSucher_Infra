@@ -1,0 +1,32 @@
+- name: Ensure Grafana directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  loop:
+    - /etc/grafana
+    - /etc/grafana/provisioning/datasources
+    
+- name: Copy Grafana grafana.ini
+  copy:
+    src: /shared/infra_grafana/grafana.ini
+    dest: /etc/grafana/grafana.ini
+    owner: root
+    group: root
+    mode: '0644'
+    
+- name: Copy Grafana provisioning - prometheus.yml
+  copy:
+    src: /shared/infra_grafana/prometheus.yml
+    dest: /etc/grafana/provisioning/datasources/prometheus.yml
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Restart Grafana
+  systemd:
+    name: grafana-server
+    state: restarted    
+    enabled: true

@@ -1,0 +1,5 @@
+- name: Deploy Grafana
+  hosts: infra
+  become: true
+  roles:
+    - deploy-grafana

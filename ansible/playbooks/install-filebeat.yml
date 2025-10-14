@@ -1,0 +1,5 @@
+- name: Install Filebeat
+  hosts: db, infra, frontend
+  become: true
+  roles:
+    - install-filebeat

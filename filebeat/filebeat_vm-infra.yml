@@ -1,0 +1,30 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /opt/kafka/logs/*.log
+  fields:
+    vm: infra
+    service: kafka
+  fields_under_root: true
+
+- type: log
+  enabled: true
+  paths:
+    - /var/log/logstash/*.log
+  fields:
+    vm: infra
+    service: logstash
+  fields_under_root: true
+    
+- type: log
+  enabled: true
+  paths:
+    - /var/log/kibana/*.log
+  fields:
+    vm: infra
+    service: kibana
+  fields_under_root: true
+  
+output.logstash:
+  hosts: ["192.168.56.104:5044"]

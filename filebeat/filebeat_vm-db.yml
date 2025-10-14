@@ -1,0 +1,20 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/postgresql/postgresql-*.log
+  fields:
+    vm: db
+    service: postgresql
+  fields_under_root: true
+
+- type: log
+  paths:
+    - /var/log/elasticsearch/*.log
+  fields:
+    vm: db
+    service: elasticsearch
+  fields_under_root: true
+  
+output.logstash:
+  hosts: ["192.168.56.104:5044"]

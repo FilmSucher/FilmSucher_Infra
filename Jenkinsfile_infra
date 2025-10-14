@@ -62,6 +62,69 @@ pipeline {
                 '''
             }
         }
+		
+		stage('Copy FileBeat to Ansible container') {
+            steps {
+                sh '''
+					rm -rf /shared/infra_filebeat/filebeat_vm-front.yml
+					cp -r filebeat/filebeat_vm-front.yml /shared/infra_filebeat/filebeat_vm-front.yml
+					
+					rm -rf /shared/infra_filebeat/filebeat_vm-db.yml
+					cp -r filebeat/filebeat_vm-db.yml /shared/infra_filebeat/filebeat_vm-db.yml
+					
+					rm -rf /shared/infra_filebeat/filebeat_vm-infra.yml
+					cp -r filebeat/filebeat_vm-infra.yml /shared/infra_filebeat/filebeat_vm-infra.yml
+                '''
+            }
+        }
+		
+		stage('Deploy FileBeat via Ansible') {
+            steps {
+                sh '''
+                    docker exec ansible \
+                      ansible-playbook -i inventory.ini playbooks/deploy-filebeat.yml -v
+                '''
+            }
+        }
+		
+		stage('Copy Prometheus to Ansible container') {
+            steps {
+                sh '''
+					rm -rf /shared/infra_prometheus/prometheus.yml
+					cp -r prometheus/prometheus.yml /shared/infra_prometheus/prometheus.yml
+                '''
+            }
+        }
+		
+		stage('Deploy Prometheus via Ansible') {
+            steps {
+                sh '''
+                    docker exec ansible \
+                      ansible-playbook -i inventory.ini playbooks/deploy-prometheus.yml -v
+                '''
+            }
+        }
+		
+		stage('Copy Grafana to Ansible container') {
+            steps {
+                sh '''
+					rm -rf /shared/infra_grafana/grafana.ini
+					cp -r grafana/grafana.ini /shared/infra_grafana/grafana.ini
+					
+					rm -rf /shared/infra_grafana/prometheus.yml
+					cp -r grafana/prometheus.yml /shared/infra_grafana/prometheus.yml
+                '''
+            }
+        }
+		
+		stage('Deploy Grafana via Ansible') {
+            steps {
+                sh '''
+                    docker exec ansible \
+                      ansible-playbook -i inventory.ini playbooks/deploy-grafana.yml -v
+                '''
+            }
+        }
     }
 	
 	post {

@@ -53,6 +53,14 @@
     enabled: true
     name: kafka
     state: restarted
+    
+- name: Delete Kafka topic "logs" if exists
+  command: >
+    /opt/kafka/bin/kafka-topics.sh
+    --delete
+    --topic logs
+    --bootstrap-server 192.168.56.104:9092
+  ignore_errors: yes
 
 - name: Create Kafka topic "logs"
   command: >
@@ -62,5 +70,3 @@
     --bootstrap-server 192.168.56.104:9092
     --replication-factor 1
     --partitions 1
-  args:
-    creates: /var/lib/kafka/data/logs-topic-created
